@@ -36,12 +36,12 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="CloudFlare Tunnel"
-    icon="end-to-end"
+    icon="cloudflare"
     subtitle="Cloudflare Tunnel creates a secure, end-to-end encrypted connection to your Cloudflare network without exposing your service to the public internet. It eliminates the need for port forwarding on your router and simplifies remote access."
   >}}
       {{< hextra/feature-card
     title="OPNsense"
-    icon="shield-check"
+    icon="router"
     subtitle="Securely manage your homelab network with PfSense, a powerful open-source firewall and routing platform. It features advanced firewall rules, traffic shaping, and intrusion detection. Seamlessly integrate VPNs and multi-WAN setups for enhanced control and reliability."
   >}}
   {{< hextra/feature-card
@@ -51,7 +51,7 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="TightVNCServer"
-    icon="server"
+    icon="vnc"
     subtitle="TightVNC Server is a lightweight and minimalistic VNC server that allows you to self-host remote desktop access. It enables screen sharing and control over a network using the VNC protocol. Ideal for low-resource systems, it’s simple to set up and use."
   >}}
 {{< /hextra/feature-grid >}}

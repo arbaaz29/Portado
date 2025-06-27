@@ -6,7 +6,7 @@ weight: 3
 This guide outlines how the network topology is structured within the ProxHome homelab infrastructure, which is powered by Proxmox VE, pfSense, and Tailscale.
 
 ### Overview
-![Network](/images/ProxHome.png)
+![Network](/images/Portado.png)
 
 ProxHome uses a virtualized network architecture segmented into three main subnets:
 

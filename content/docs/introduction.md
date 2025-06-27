@@ -12,16 +12,16 @@ Welcome to my Portato setup Documentation!
 Many times, you may want to instantly access your machines from any internet-enabled device. However, to securely do so, you typically need to install a VPN client that is compatible with the VPN server running inside your personal network. This setup only grants network access, after which you still need to connect to a VNC server and log in remotely to access a user interactive GUI. But what if you could skip the VPN configuration and access the GUI directly and securely over the internet? Portato is my implementation for securely accessing machines in my homelab over the internet, without the need for a VPN.
 
 ## Network Topology
-![Network](/images/ProxHome.png)
+![Network](/images/Portado.png)
 
 ## Configuration
 {{< cards >}}
-  {{< card link="/docs/hardware/" title="Hardware Configuration" icon="chip" subtitle="Overview of the hardware powering the Homelab." >}}
-  {{< card link="/docs/network/" title="Network Configuration" icon="globe-alt" subtitle="Managing virtual networks within my homelab." >}}
+  {{< card link="/docs/hardware/" title="Hardware Configuration" icon="AMD" subtitle="Overview of the hardware powering the Homelab." >}}
+  {{< card link="/docs/network/" title="Network Configuration" icon="router" subtitle="Managing virtual networks within my homelab." >}}
   {{< card link="/docs/firewall/" title="Firewall Configuration" icon="shield-check" subtitle="Securing the network using OPNsense firewall rules." >}}
   {{< card link="/docs/proxy/" title="Apache Guacamole" icon="avacado" subtitle="Enabling secure GUI access to configured instances within the homelab" >}}
-  {{< card link="/docs/cloudflare/" title="Cloudflare Tunnel" icon="end-to-end" subtitle="Creating a secure tunnel to cloudflare network enabling exposing virtual instance sercurely to cloudflare services." >}}
-  {{< card link="/docs/vnc/" title="TightVNCServer" icon="server" subtitle="Enabling remote log in to desired machines." >}}
+  {{< card link="/docs/cloudflare/" title="Cloudflare Tunnel" icon="cloudflare" subtitle="Creating a secure tunnel to cloudflare network enabling exposing virtual instance sercurely to cloudflare services." >}}
+  {{< card link="/docs/vnc/" title="TightVNCServer" icon="vnc" subtitle="Enabling remote log in to desired machines." >}}
   {{< card link="/docs/proxy/" title="Nginx-Proxy-Manager" icon="proxy" subtitle="Directing traffic securely to configured homelab instances" >}}
 {{< /cards >}}
 

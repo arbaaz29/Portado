@@ -1,6 +1,6 @@
 ---
 title: VNC Configuration
-weight: 4
+weight: 7
 ---
 
 ### Notes before setting up VNC:
