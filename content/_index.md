@@ -4,7 +4,7 @@ layout: hextra-home
 ---
 
 {{< hextra/hero-badge >}}
-  <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-primary-400"></div>
+  <div class="hx-w-2 hx-h-2 hx-rounded-full" style="background-color:rgb(2, 185, 70);"></div>
   <span>Version: 0.8.0</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
