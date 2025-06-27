@@ -17,7 +17,7 @@ Portado is my implementation for securely accessing machines in my homelab over 
 
 ## Configuration
 {{< cards >}}
-  {{< card link="https://proxhome.arbaazjamadar.com" title="Homelab-Setup" icon="hextra" subtitle="How I setup my homelab" >}}
+  {{< card link="https://proxhome.arbaazjamadar.com" title="Homelab-Setup" icon="hextra" subtitle="Overview of homelab setup." >}}
   {{< card link="/docs/hardware/" title="Hardware Configuration" icon="AMD" subtitle="Overview of the hardware powering the homelab." >}}
   {{< card link="/docs/network/" title="Network Configuration" icon="router" subtitle="Managing virtual networks within my homelab." >}}
   {{< card link="/docs/firewall/" title="Firewall Configuration" icon="shield-check" subtitle="Securing the network using OPNsense firewall rules." >}}
