@@ -3,26 +3,27 @@ title: Network Configuration
 weight: 3
 ---
 
-This guide outlines how the network topology is structured within the ProxHome homelab infrastructure, which is powered by Proxmox VE, pfSense, and Tailscale.
+This guide outlines how the network topology is structured within the homelab infrastructure, which is powered by Proxmox VE, OPNsense, Nginx Reverse-Proxy and Cloudflare Tunnel.
 
 ### Overview
+
 ![Network](/images/Portado.png)
 
-ProxHome uses a virtualized network architecture segmented into three main subnets:
+The Proxmox homelab uses a virtualized network to segment the main network into three subnets:
 
 - **WAN:** 192.168.1.1/24
 - **LAN:** 10.10.1.1/24
-- **DMZ:** 10.10.1.200/24
+- **DMZ:** 10.10.200.1/24
 
-A pfSense virtual firewall routes and filters traffic between these networks, enabling secure connectivity, isolation, and full-tunnel VPN access.
+A OPNsense virtual firewall routes and filters traffic between these networks, enabling secure connectivity and isolation.
 
 
 ### Topology Components
 
 #### Proxmox VE Host
 
-- Acts as the virtualization platform.
-- Provides virtual bridges (`vmbr0`, `vmbr1`, `vmbr2`) to connect VMs to pfSense and the physical network.
+- A open-source baremetal virtualization platform, homelabers bread and butter.
+- Provides virtual bridges (`vmbr0`, `vmbr1`, `vmbr2`) the machines on these bridges will be assigned according to the configurations in OPNsense. These bridges are connected to OPNsense router as network interfaces, the traffic will be filtered and managed by OPNsense virutal router and firewall
 
 #### Virtual Bridges (vmbr)
 
@@ -30,21 +31,20 @@ A pfSense virtual firewall routes and filters traffic between these networks, en
 - **vmbr1** – LAN bridge for internal VMs (`10.10.1.1/24`)
 - **vmbr2** – DMZ bridge for exposed services (`10.10.200.1/24`)
 
----
 
-#### pfSense Firewall (VM)
+#### OPNsense Firewall (VM)
 
 - Interfaces:
   - **net0 (WAN):** Connected to `vmbr0`
   - **net1 (LAN):** Connected to `vmbr1`
   - **net2 (DMZ):** Connected to `vmbr2`
-- Handles inter-VLAN routing, NAT, firewall rules, and VPN access.
+- Handles inter-VLAN routing, NAT, firewall rules, SIEM integration and VPN access.
 
 #### Internal VMs
 
 - **Parrot Desktop VM**
   - Connected to LAN via `vmbr1`
-- **Ubuntu Server**
+- **Nginx-Reverse-Proxy Server**
   - Connected to DMZ via `vmbr2`
 
 
@@ -53,22 +53,34 @@ A pfSense virtual firewall routes and filters traffic between these networks, en
 #### Router
 
 - Default Gateway: `192.168.1.1`
-- Provides internet access for the Proxmox host and pfSense WAN interface.
+- Provides internet access for the Proxmox host and OPNsense WAN interface.
 
 #### External Access
 
-- Devices on the `192.168.1.1/24` subnet can access the pfSense WAN.
-- **Tailscale** provides full-tunnel VPN access, enabling remote access to internal services securely over the internet.
+- Devices on the `192.168.1.1/24` subnet can access the OPNsense WAN.
+- **Cloudflare Tunnel** provides full-tunnel private access, this helps to integrate the instances directly into cloudflare network, this will later help resolve the DNS query to the instance where `Nginx-Reverse-Proxy` is hosted.
 
-#### VPN Integration (Tailscale)
+#### Full-Tunnel (Cloudflare)
 
-- Full-tunnel VPN routes traffic from external devices through pfSense.
-- Ensures encrypted remote access to LAN and DMZ resources.
+- Full-tunnel routes traffic from Cloudflare network to devices through OPNsense.
+- No need to setup NAT port forwarding or anything, the cloudflare tunnel automatically routes the traffic from configured instances to cloudflare network.
+- Ensures encrypted remote access to Nginx-Reverse-Proxy in `DMZ` subnet.
 
 #### Subnet Breakdown
 
 | Network | Subnet | Purpose | Bridge | Devices |
 |--------|--------|---------|--------|--------------------|
-| WAN    | 192.168.1.0/24 | External access to Internet | vmbr0 | pfSense (WAN), Router, Proxmox |
-| LAN    | 10.10.1.1/24 | Internal/Trusted VM network | vmbr1 | Parrot VM |
-| DMZ    | 10.10.200.1/24 | Untrusted services | vmbr2 | Ubuntu Server |
+| WAN    | 192.168.1.0/24 | External access to Internet | vmbr0 | OPNsense (WAN), Router, Proxmox |
+| LAN    | 10.10.1.0/24 | Internal/Trusted VM network | vmbr1 | Guacamole server & Parrot VM |
+| DMZ    | 10.10.200.0/24 | Untrusted services | vmbr2 | Nginx-Reverse_Proxy |
+
+### &#9733; Note
+
+After trying out OpenWRT, pfSense, and OPNsense, I have settled on OPNsense due to its ease of use, powerful SIEM and VPN integrations, and robust firewall capabilities.
+Here is a dashboard overview presented in OPnsense, easy to visualize traffic blocked and let in by the firewall.
+![opn](/proxy/opnsense.png)
+
+
+{{< callout type="warning" >}}
+  Portado is still in **active** development. Questions/Suggestions: [open an issue](https://github.com/arbaaz29/Portado/issues)
+{{< /callout >}}

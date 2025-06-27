@@ -45,7 +45,7 @@ layout: hextra-home
     subtitle="Securely manage your homelab network with PfSense, a powerful open-source firewall and routing platform. It features advanced firewall rules, traffic shaping, and intrusion detection. Seamlessly integrate VPNs and multi-WAN setups for enhanced control and reliability."
   >}}
   {{< hextra/feature-card
-    title="Nginx-Proxy-Manager"
+    title="Nginx-Reverse-Proxy"
     icon="proxy"
     subtitle="Nginx Proxy Manager with Web based GUI to help manage routing incoming traffic to your configured services securely, using SSL/TLS encryption and an easy-to-use web interface. Not only that, but it can configure it to create new certificates for subdomains."
   >}}

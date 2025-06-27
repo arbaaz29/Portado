@@ -22,7 +22,7 @@ Many times, you may want to instantly access your machines from any internet-ena
   {{< card link="/docs/proxy/" title="Apache Guacamole" icon="avacado" subtitle="Enabling secure GUI access to configured instances within the homelab" >}}
   {{< card link="/docs/cloudflare/" title="Cloudflare Tunnel" icon="cloudflare" subtitle="Creating a secure tunnel to cloudflare network enabling exposing virtual instance sercurely to cloudflare services." >}}
   {{< card link="/docs/vnc/" title="TightVNCServer" icon="vnc" subtitle="Enabling remote log in to desired machines." >}}
-  {{< card link="/docs/proxy/" title="Nginx-Proxy-Manager" icon="proxy" subtitle="Directing traffic securely to configured homelab instances" >}}
+  {{< card link="/docs/proxy/" title="Nginx-Reverse-Proxy" icon="proxy" subtitle="Directing traffic securely to configured homelab instances" >}}
 {{< /cards >}}
 
 ## Features
@@ -54,5 +54,5 @@ Many times, you may want to instantly access your machines from any internet-ena
 ## Questions or Feedback?
 
 {{< callout type="warning" >}}
-  ProxHome is still in **active** development. Questions/Suggestions: [open an issue](https://github.com/arbaaz29/Portado/issues)
+  Portado is still in **active** development. Questions/Suggestions: [open an issue](https://github.com/arbaaz29/Portado/issues)
 {{< /callout >}}
