@@ -1,4 +1,4 @@
-baseURL: https://portado.pages.dev
+baseURL: http://localhost
 languageCode: en-us
 title: Portado
 theme: hextra_portato
