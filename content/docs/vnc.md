@@ -1,5 +1,5 @@
 ---
-title: VNC Configuration
+title: VNC
 weight: 7
 ---
 

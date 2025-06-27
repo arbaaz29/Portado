@@ -1,5 +1,5 @@
 ---
-title: Hardware Configuration
+title: Hardware
 weight: 2
 ---
 

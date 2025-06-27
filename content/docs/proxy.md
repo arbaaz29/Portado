@@ -1,5 +1,5 @@
 ---
-title: Proxy Configuration
+title: Proxy
 weight: 7
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Network Configuration
+title: Network
 weight: 3
 ---
 

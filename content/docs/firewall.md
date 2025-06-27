@@ -1,5 +1,5 @@
 ---
-title: Firewall Configuration
+title: Firewall
 weight: 4
 ---
 

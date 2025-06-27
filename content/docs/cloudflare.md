@@ -1,5 +1,5 @@
 ---
-title: Cloudflare Tunnel Configuration
+title: Cloudflare Tunnel
 weight: 6
 ---
 
