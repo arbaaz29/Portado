@@ -30,9 +30,9 @@ layout: hextra-home
 
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
-    title="Apache Guacamole"
+    title="Portado"
     icon="avacado"
-    subtitle="Apache Guacamole is a clientless remote desktop gateway that lets users access systems via RDP, VNC, or SSH directly from a web browser. It requires no plugins and supports centralized session management. Guacamole also integrates with LDAP and supports two-factor authentication."
+    subtitle="Portado is a custom flavour of Apache Guacamole. Apache Guacamole is a clientless remote desktop gateway that lets users access systems via RDP, VNC, or SSH directly from a web browser. Guacamole also integrates with LDAP and supports two-factor authentication."
   >}}
   {{< hextra/feature-card
     title="CloudFlare Tunnel"
