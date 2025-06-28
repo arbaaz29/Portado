@@ -3,7 +3,7 @@ title: Apache Guacamole
 weight: 8
 ---
 
-Let's setup Apache Guacamole !!!!!!!
+[Let's setup Apache Guacamole !!!!!!!](https://github.com/arbaaz29/guacamole-docker-compose)
 
 ### Overview
 
@@ -148,9 +148,9 @@ Apache Guacamole is a clientless remote desktop gateway that allows users to acc
 
     - default password - `guacadmin`
 
-- Log in and change guacadmin's password. Go to settings and create a new user with admin access that can add new connections and users.
+- Log in scan and configure `TOTP` and change guacadmin's password. Go to settings and create a new user with admin access that can add new connections and users.
 
-- Test if you are able to log in as the new user before you disable the guacadmin user.
+- Test if you are able to log in as the new user before you disable the `guacadmin` user.
 
 ![user](/Guacamole/user.png)
 
@@ -173,6 +173,60 @@ Apache Guacamole is a clientless remote desktop gateway that allows users to acc
 ![window](/Guacamole/window.png)
 
 - Voila! Guacamole has been set up successfully, and now you are able to access your machines securely from anywhere without the need for a VPN.
+
+### Optional:
+
+- In case you want to customize your sign-in page, user page, or any other pages of your application, you can perform the following steps:
+
+    - Get the `Guacamole.war` file from `guacaomole/guacamole` container:
+    ```bash
+        docker cp guacamole/guacamole:/opt/guacamole/webapp .
+        #In case of any errors:
+        docker run -d -name guacamole guacamole/guacamole
+        docker cp guacamole:/opt/guacamole/webapp .
+    ```
+- This will output the `webapp` directory in your current directory.
+
+- Extract the contents from the `guacamole.war` file present inside `webapp`. You will need `JDK (Java Development Kit)` for the following steps:
+
+    ```bash
+        mkdir guacamole_contents
+        cd guacamole_contents
+        jar -xf ../guacamole.war 
+    ```
+
+- If you want to change the profile image and favicon, you will need to replace `guac-tricolor.svg` for the `profile` and `logo-64.png` and `logo-144.png` for the `favicon`.
+
+- In case you want to change the content of the website, you can modify it from `transliteration/en.json`.
+
+- Once the configurations are finalized, re-zip the contents:
+    ```bash
+        jar -cf guacamole.war -C guacamole_contents .
+    ```
+
+- Now, create a custom container image with these modifications:
+
+    ```dockerfile
+        FROM guacamole/guacamole
+
+        COPY ./guacamole.war /opt/guacamole/webapp
+
+        EXPOSE 8080
+
+    ```
+
+    ```bash
+        docker build -t repo_name/guacamole .
+
+        docker push repo_name/guacamole
+    ```
+
+- Update the guacamole service’s image name with repo_name/guacamole and recompose the deployment. The changes will be visible when the cache expires.
+
+
+# Docker-compose file:
+
+- [https://github.com/arbaaz29/guacamole-docker-compose](https://github.com/arbaaz29/guacamole-docker-compose)
 
 {{< callout type="warning" >}}
   Portado is still in **active** development. Questions/Suggestions: [open an issue](https://github.com/arbaaz29/Portado/issues)
