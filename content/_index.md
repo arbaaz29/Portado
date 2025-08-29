@@ -17,7 +17,7 @@ layout: hextra-home
 
 <div class="hx-mb-12">
 {{< hextra/hero-subtitle >}}
-  Take remote control of your machines with a smooth interface
+  Take remote control of your machines with a smooth interface. A project by Arbaaz Jamadar.
 {{< /hextra/hero-subtitle >}}
 </div>
 
